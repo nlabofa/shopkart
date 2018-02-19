@@ -1,0 +1,124 @@
+extends layout
+include mixins/footer
+include mixins/sidebarCategory
+block content
+    .breadcrumb-wrap
+        .container
+            ol.breadcrumb
+                li
+                    a(href='/') Home
+                li.active Product
+    .main-container.inner-container
+        .row
+            +sidebarCategory(categorysidebar)
+            .col-md-9
+                .row.product-info
+                    .col-sm-5.images-block
+                        p
+                            img.img-responsive.thumbnail(src=`images/product-images/${product.photo}`, alt='Image')
+                        ul.list-unstyled.list-inline
+                            li
+                                img.img-responsive.thumbnail(src='images/product-images/thumb1.jpg', alt='Image')
+                            li
+                                img.img-responsive.thumbnail(src='images/product-images/thumb2.jpg', alt='Image')
+                            li
+                                img.img-responsive.thumbnail(src='images/product-images/thumb3.jpg', alt='Image')
+                            li
+                                img.img-responsive.thumbnail(src='images/product-images/thumb4.jpg', alt='Image')
+                    .col-sm-7.product-details
+                        h2 #{product.name}
+                        hr
+                        ul.list-unstyled.manufacturer
+                            li
+                                span Brand: #{product.categories}
+                            li
+                                span Availability:
+                                strong.label.label-success In Stock               
+                        hr
+                        .price
+                            span.price-head Price :
+                            span.price-new $#{product.price}
+                        hr
+                        .options
+                            .form-group
+                                label.control-label.text-uppercase(for='input-quantity') Qty:
+                                input#input-quantity.form-control(type='text', name='quantity', value='1', size='2')
+                            .cart-button.button-group
+                                button.btn.btn-wishlist(type='button', title='Wishlist')
+                                    i.fa.fa-heart
+                                button.btn.btn-compare(type='button', title='Compare')
+                                    i.fa.fa-bar-chart-o
+                                button.btn.btn-cart(type='button')
+                                    i.fa.fa-shopping-cart.hidden-sm.hidden-xs
+                                        |  Add to Cart
+                        hr  
+                .product-info-box
+                    h4.heading Description
+                    .content.panel-smart
+                        p=product.description
+                .product-info-box
+                    h4.heading Related Products
+                    br
+                    .row
+                        .col-md-4.col-sm-6
+                            .product-col
+                                .image
+                                    img.img-responsive(src='images/product-images/2.jpg', alt='product')
+                                .caption
+                                    h4
+                                        a(href='product.html') Digital Electro Goods
+                                .description
+                                    | We are so lucky living in such a wonderful time. Our almost unlimited ...
+                                .price
+                                    span.price-new $199.50
+                                    span.price-old $249.50
+                                .cart-button.button-group
+                                    button.btn.btn-cart(type='button')
+                                        i.fa.fa-shopping-cart.hidden-sm.hidden-xs
+                                            | 										Add to Cart
+                                    button.btn.btn-wishlist(type='button', title='Wishlist')
+                                        i.fa.fa-heart
+                                    button.btn.btn-compare(type='button', title='Compare')
+                                        i.fa.fa-bar-chart-o
+                        .col-md-4.col-sm-6
+                            .product-col
+                                .image
+                                    img.img-responsive(src='images/product-images/3.jpg', alt='product')
+                                .caption
+                                h4
+                                    a(href='product.html') Digital Electro Goods
+                                .description
+                                    | We are so lucky living in such a wonderful time. Our almost unlimited ...
+                                .price
+                                    span.price-new $199.50
+                                    span.price-old $249.50
+                                .cart-button.button-group
+                                    button.btn.btn-cart(type='button')
+                                        i.fa.fa-shopping-cart.hidden-sm.hidden-xs
+                                            | 											Add to Cart
+                                    button.btn.btn-wishlist(type='button', title='Wishlist')
+                                        i.fa.fa-heart
+                                    button.btn.btn-compare(type='button', title='Compare')
+                                        i.fa.fa-bar-chart-o
+                        .col-md-4.col-sm-6
+                            .product-col
+                                .image
+                                    img.img-responsive(src='images/product-images/4.jpg', alt='product')
+                                .caption
+                                h4
+                                    a(href='product.html') Digital Electro Goods
+                                .description
+                                    | We are so lucky living in such a wonderful time. Our almost unlimited ...
+                                .price
+                                    span.price-new $199.50
+                                    span.price-old $249.50
+                                .cart-button.button-group
+                                    button.btn.btn-cart(type='button')
+                                        i.fa.fa-shopping-cart.hidden-sm.hidden-xs
+                                            | 											Add to Cart
+                                    button.btn.btn-wishlist(type='button', title='Wishlist')
+                                        i.fa.fa-heart
+                                    button.btn.btn-compare(type='button', title='Compare')
+                                        i.fa.fa-bar-chart-o
+block footer
+    +footer()

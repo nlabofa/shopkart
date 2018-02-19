@@ -1,0 +1,37 @@
+mixin featuredProducts(featured)
+    .full-banner
+        img(src="images/banners/big-banner.jpg", alt="Banner" class="img-responsive")
+    section.products-list
+        h2.product-head Featured Products
+        .row
+            //-pre=h.dump(featured)
+            each product in featured
+                .col-md-3.col-sm-6
+                    .product-col
+                        .image
+                            img.img-responsive(src=`/images/product-images/${product.photo}`, alt='product')
+                        .caption
+                            h4
+                                a(href='#')=product.name
+                            .description=product.description
+                                
+                            .price
+                                span.price-new $ #{product.price}
+                                span.price-old $ #{product.price}
+                            .cart-button.button-group
+                                button.btn.btn-cart(type='button')
+                                    i.fa.fa-shopping-cart
+                                    |  Add to Cart
+                                button.btn.btn-wishlist(type='button', title='Wishlist')
+                                    i.fa.fa-heart
+                                button.btn.btn-compare(type='button', title='Compare')
+                                    i.fa.fa-bar-chart-o
+       
+    .col2-banners
+        .row
+            .col-sm-5.col-xs-12
+                img.img-responsive(src='images/banners/banner-img1.png', alt='Banner Image')
+            .col-xs-12.hidden-lg.hidden-md.hidden-sm
+                br
+            .col-sm-7.col-xs-12
+                img.img-responsive(src='images/banners/banner-img2.png', alt='Banner Image')

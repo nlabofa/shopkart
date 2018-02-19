@@ -1,0 +1,141 @@
+doctype 
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title= `${title} | ${h.siteName}`
+        link(rel="stylesheet", href="/css/template/bootstrap.min.css")
+        link(rel="stylesheet", href="/css/template/font-awesome/css/font-awesome.min.css")
+        link(rel="stylesheet", href="/css/template/owl.carousel.css")
+        link(rel="stylesheet", href="/css/template/base.css")
+        link(rel="stylesheet", href="/css/template/responsive.css")      
+        link(rel="stylesheet", href="/dist/style.css")
+        link(rel="shortcut icon" type="image/png" href="/images/icons/thumb.png")
+
+    body
+        block header
+            .top-bar.hidden-xs
+                    .container
+                        .row
+                            .col-md-5.col-sm-8.col-xs-12
+                                ul.list-unstyled.list-inline.text-uppercase
+                                    li
+                                        a(href='/' ) Home
+                                    if user
+                                        li
+                                            a(href='/cart' class=(currentPath.startsWith('/cart')?'active':'')) Shopping Cart
+                                        li
+                                            a(href='/checkout' class=(currentPath.startsWith('/checkout')?'active':'')) Checkout
+                                        li
+                                            a(href='/logout' class=(currentPath.startsWith('/logout')?'active':'')) Logout
+                                    else
+                                        li
+                                                a(href='/login' class=(currentPath.startsWith('/login')?'active':'')) Login
+                                        li
+                                                a(href='/register' class=(currentPath.startsWith('/register')?'active':'')) Register
+                            .col-md-1.col-sm-4.col-xs-12
+                                .pull-right
+                                    .btn-group
+                                        button.btn.btn-link.dropdown-toggle.text-uppercase(data-toggle='dropdown')
+                                            | Eng
+                                            i.fa.fa-caret-down
+                                        ul.pull-right.dropdown-menu
+                                            li
+                                                a(tabindex='-1', href='#') English
+                                            li
+                                                a(tabindex='-1', href='#') French
+                            .col-md-3.col-sm-6.col-xs-12
+                                #search
+                                    .input-group
+                                        input.form-control(type='text', placeholder='Search')
+                                        span.input-group-btn
+                                            button.btn(type='button')
+                                                i.fa.fa-search
+                            if user
+                                .col-md-2.col-sm-6.col-xs-12
+                                    #cart.btn-group.btn-block
+                                        button.btn.btn-block.btn-lg.dropdown-toggle.text-uppercase(type='button', data-toggle='dropdown' style="width:75%")
+                                            i.fa.fa-shopping-cart
+                                            span#cart-total #{user.cartlist.length + ' item(s)'}
+                                            i.fa.fa-caret-down
+                                        ul.dropdown-menu.pull-right
+                                            li
+                                                table.table.hcart
+                                                    tr
+                                                        td.text-center
+                                                            a(href='product.html')
+                                                                img.img-thumbnail.img-responsive(src='images/product-images/thumb1.jpg', alt='image', title='image')
+                                                        td.text-left
+                                                            a(href='product-full.html')
+                                                                | Seeds
+                                                        td.text-right x 1
+                                                        td.text-right $120.68
+                                                        td.text-center
+                                                            a(href='#')
+                                                                i.fa.fa-times
+                                                    tr
+                                                        td.text-center
+                                                            a(href='product.html')
+                                                                img.img-thumbnail.img-responsive(src='images/product-images/thumb2.jpg', alt='image', title='image')
+                                                        td.text-left
+                                                            a(href='product-full.html')
+                                                                | Organic
+                                                        td.text-right x 2
+                                                        td.text-right $240.00
+                                                        td.text-center
+                                                            a(href='#')
+                                                                i.fa.fa-times
+                                            li
+                                                table.table.table-bordered.total
+                                                    tbody
+                                                        tr
+                                                            td.text-right
+                                                                strong Sub-Total
+                                                            td.text-left $1,101.00
+                                                        tr
+                                                            td.text-right
+                                                                strong Eco Tax (-2.00)
+                                                            td.text-left $4.00
+                                                        tr
+                                                            td.text-right
+                                                                strong VAT (17.5%)
+                                                            td.text-left $192.68
+                                                        tr
+                                                            td.text-right
+                                                                strong Total
+                                                            td.text-left $1,297.68
+                                                p.text-right.btn-block1
+                                                    a(href='cart.html')
+                                                        | View Cart
+                                                    a(href='#')
+                                                        | Checkout
+                                .col-md-1(style="margin-left:-5em;margin-top:0.4em")
+                                    <button class="btn-text" type="button" style="background:transparent"><i class="fa fa-heart hidden-sm hidden-xs" style="font-size:1.3em!important"></i><span class="wishlist-count" style="padding-left:0.3em;font-size:1.3em">#{user.wishlist && user.wishlist.length}</span></button>
+                                                               
+        block banner
+        block messages 
+            if locals.flashes 
+                .inner
+                    .flash-messages
+                        -const categories = Object.keys(locals.flashes)
+                        each category in categories 
+                            each message in flashes[category]
+                                .flash(class=`flash--${category}`)  
+                                    p.flash__text!= message 
+                                    button.flash__remove(onClick="this.parentElement.remove()") &times;                     
+        .main-container.container
+            block content
+        block footer
+        block scripts
+            script(src="/javascripts/templates/jquery-1.11.1.min.js")
+            script( src="/javascripts/templates/jquery-migrate-1.2.1.min.js")
+            script( src="/javascripts/templates/bootstrap.min.js")
+            script( src="/javascripts/templates/bootstrap-hover-dropdown.min.js")
+            script( src="/javascripts/templates/jquery.magnific-popup.min.js")
+            script( src="/javascripts/templates/owl.carousel.min.js")
+            script( src="/javascripts/templates/custom.js")
+            script(src="/dist/App.bundle.js")
+            
+            
+

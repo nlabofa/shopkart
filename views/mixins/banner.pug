@@ -1,0 +1,81 @@
+mixin banner()
+    header.header-wrap
+        #main-carousel.carousel.slide(data-ride='carousel')
+            .carousel-inner
+                .item.active
+                    img.img-responsive(src='images/slider-imgs/slider-img1.jpg', alt='Slider')
+                .item
+                    img.img-responsive(src='images/slider-imgs/slider-img2.jpg', alt='Slider')
+            a.left.carousel-control(href='#main-carousel', role='button', data-slide='prev')
+                span.glyphicon.glyphicon-chevron-left
+            a.right.carousel-control(href='#main-carousel', role='button', data-slide='next')
+                span.glyphicon.glyphicon-chevron-right
+        
+        nav#main-menu.navbar(role='navigation')
+            .container
+                .navbar-header
+                    button.btn.btn-navbar.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-cat-collapse')
+                        span.sr-only Toggle Navigation
+                        i.fa.fa-bars
+                .collapse.navbar-collapse.navbar-cat-collapse
+                    ul.nav.navbar-nav
+                        li
+                                a(href='category-list.html') Mens
+                        li.dropdown
+                            a.dropdown-toggle(href='category-list.html', data-toggle='dropdown', data-hover='dropdown', data-delay='10')
+                                | Womens
+                            ul.dropdown-menu(role='menu')
+                                li
+                                    a(tabindex='-1', href='#') Wodden Chairs
+                                li
+                                    a(tabindex='-1', href='#') Glass Table
+                                li
+                                    a(tabindex='-1', href='#') Softwood Chairs
+                        li.dropdown
+                            a.dropdown-toggle(href='category-list.html', data-toggle='dropdown', data-hover='dropdown', data-delay='10') Boys
+                            .dropdown-menu
+                                .dropdown-inner
+                                    ul.list-unstyled
+                                        li.dropdown-header Sub Category
+                                        li
+                                            a(tabindex='-1', href='#') item 1
+                                        li
+                                            a(tabindex='-1', href='#') item 2
+                                        li
+                                            a(tabindex='-1', href='#') item 3
+                                    ul.list-unstyled
+                                        li.dropdown-header Sub Category
+                                        li
+                                            a(tabindex='-1', href='#') item 1
+                                        li
+                                            a(tabindex='-1', href='#') item 2
+                                        li
+                                            a(tabindex='-1', href='#') item 3
+                        li
+                            a(href='category-list.html') Girls
+                        li
+                            a(href='category-list.html') UniSex
+                        li
+                            a(href='category-list.html') Teens
+                        li
+                            a(href='category-list.html') Offers
+                        li.dropdown
+                            a.dropdown-toggle(href='category-list.html', data-toggle='dropdown', data-hover='dropdown', data-delay='10')
+                                | Pages
+                            ul.dropdown-menu(role='menu')
+                                li
+                                    a(tabindex='-1', href='index-2.html') Home
+                                li
+                                    a(tabindex='-1', href='about.html') About
+                                li
+                                    a(tabindex='-1', href='category-list.html') Category List
+                                li
+                                    a(tabindex='-1', href='category-grid.html') Category Grid
+                                li
+                                    a(tabindex='-1', href='product.html') Product
+        .logo-wrap.container
+            h1
+                | Elite 
+                span Fashion
+            h2 Shoppe Stores 
+

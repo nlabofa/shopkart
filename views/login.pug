@@ -1,0 +1,34 @@
+extends layout
+include mixins/footer
+block content
+    .breadcrumb-wrap
+        .container
+            ol.breadcrumb
+                li
+                    a(href='/') Home
+                li.active Login
+    .main-container.container
+    h2.main-heading.text-center
+        | Login 
+        br
+        span Sign into your Account
+    section.login-area
+        .row
+            .col-sm-6.col-sm-offset-3   
+                .panel.panel-smart
+                    .panel-heading
+                        h3.panel-title Login
+                    .panel-body
+                        p
+                            | Please login using your existing account
+                        form.form-inline(role='form' action="/login" method="POST")
+                            .form-group
+                                label.sr-only(for='exampleInputEmail2') Username
+                                input#exampleInputEmail2.form-control(type='email', placeholder='Email' name="email")
+                            .form-group
+                                label.sr-only(for='exampleInputPassword2') Password
+                                input#exampleInputPassword2.form-control(type='password', placeholder='Password' name="password")
+                            button.btn.btn-black(type='submit')
+                                |Login
+block footer
+    +footer()

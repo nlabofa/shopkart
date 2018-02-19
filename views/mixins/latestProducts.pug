@@ -1,0 +1,35 @@
+mixin latestProducts(latest)
+        section.product-carousel
+            h2.product-head Latest Products
+            .row
+                .col-xs-12
+                    
+                    #owl-product.owl-carousel
+                        each product in latest
+                            .item
+                                .product-col
+                                    .image
+                                        img.img-responsive(src=`/images/product-images/${product.photo}`, alt='product')
+                                    .caption
+                                        h4
+                                            a(href=`/${product.slug}`)=product.name
+                                        .description=product.description
+                                        .price
+                                            span.price-new $ #{product.price}
+                                            span.price-old $ #{product.price}
+                                        .cart-button.button-group
+                                            form.addcart(method="POST" action=`/api/stores/${product._id}/carts`)
+                                                - const cartlists = user.cartlist.map(obj=>obj.toString()) 
+                                                - const addedCart = cartlists.includes(product._id.toString())? 'addedcart': ''
+                                                button.btn.btn-cart(type='submit', name="cartlist" title="cartlist" class=addedCart)
+                                                    i.fa.fa-shopping-cart.hidden-sm.hidden-xs
+                                                        span#cartlist-count #{addedCart?'Added to Cart':'Add to Cart'}
+                                            form.wish(method="POST" action=`/api/stores/${product._id}/wishes`)
+                                                - const wishlists = user.wishlist.map(obj=> obj.toString())
+                                                - const wishClass = wishlists.includes(product._id.toString())? 'wishearted': ''
+                                                button.btn.btn-wishlist(type='submit', name="wishlist" title='Wishlist' class=wishClass)
+                                                    i.fa.fa-heart
+                                            button.btn.btn-compare(type='button', title='Compare')
+                                                i.fa.fa-bar-chart-o
+                            
+                    

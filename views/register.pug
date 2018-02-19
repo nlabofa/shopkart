@@ -1,0 +1,64 @@
+extends layout
+include mixins/footer
+block content
+    .breadcrumb-wrap
+        .container
+            ol.breadcrumb
+                li
+                    a(href='/') Home
+                li.active Register
+    .main-container.container
+    h2.main-heading.text-center
+        | Register 
+        br
+        span Create New Account
+    section.registration-area
+        .row
+            .col-sm-6.col-sm-offset-3   
+                .panel.panel-smart
+                    .panel-heading
+                        h3.panel-title Personal Information
+                    .panel-body
+                        form.form-horizontal(role='form' action="/register" method="POST")
+                            .form-group
+                                label.col-sm-3.control-label(for='inputFname') First Name :
+                                .col-sm-9
+                                    input#inputFname.form-control(type='text', placeholder='First Name' name="firstname")
+                            .form-group
+                                label.col-sm-3.control-label(for='inputLname') Last Name :
+                                .col-sm-9
+                                    input#inputLname.form-control(type='text', placeholder='Last Name' name="lastname")
+                            .form-group
+                                label.col-sm-3.control-label(for='inputEmail') Email :
+                                .col-sm-9
+                                    input#inputEmail.form-control(type='email', placeholder='Email' name="email")
+                            .form-group
+                                label.col-sm-3.control-label(for='inputPhone') Phone :
+                                .col-sm-9
+                                    input#inputPhone.form-control(type='text', placeholder='Phone' name="phonenumber")
+                            
+                           
+                            h3.panel-heading.inner
+                                | Password
+                            .form-group
+                                label.col-sm-3.control-label(for='inputPassword') Password :
+                                .col-sm-9
+                                    input#inputPassword.form-control(type='password', placeholder='Password' name="password")
+                            .form-group
+                                label.col-sm-3.control-label(for='inputRePassword') Re-Password :
+                                .col-sm-9
+                                    input#inputRePassword.form-control(type='password', placeholder='Re-Password' name="password-confirm")
+                            .form-group
+                                .col-sm-offset-3.col-sm-9
+                                    .checkbox
+                                        label
+                                            input(type='checkbox')
+                                            |  I'v read and agreed on Conditions
+                            .form-group
+                                .col-sm-offset-3.col-sm-9
+                                    button.btn.btn-black(type='submit')
+                                        | Register
+block footer
+    +footer()
+
+                    

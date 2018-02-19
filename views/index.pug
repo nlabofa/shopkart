@@ -1,0 +1,14 @@
+extends layout
+
+include mixins/banner
+include mixins/latestProducts
+include mixins/featuredProducts
+include mixins/footer
+block banner
+    +banner()
+block content
+    +latestProducts(latest)
+    +featuredProducts(featured)
+block footer
+    +footer()
+    

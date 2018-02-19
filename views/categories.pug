@@ -1,0 +1,42 @@
+extends layout
+include mixins/footer
+include mixins/sidebarCategory
+block content
+    .breadcrumb-wrap
+        .container
+            ol.breadcrumb
+                li
+                    a(href='/') Home
+                li
+                    a(href='/') Category
+                li.active= category
+    .main-container.inner-container
+        .row
+            +sidebarCategory(categorysidebar)
+            .col-md-9
+                h2.main-heading2.inner= category
+                .product-filter
+                    .row
+                        .col-md-4
+                            .display
+                                a(href='category-list.html')
+                                    i.fa.fa-th-list(title='List View')
+                                a.active(href='category-grid.html')
+                                    i.fa.fa-th(title='Grid View')
+                        .col-md-2.text-right
+                            label.control-label Sort
+                        .col-md-3.text-right
+                            select.form-control
+                                option(value='default', selected='selected') Default
+                                option(value='NAZ') Name (A - Z)
+                                option(value='NZA') Name (Z - A)
+                        .col-md-1.text-right
+                            label.control-label(for='input-limit') Show
+                        .col-md-2.text-right
+                            select#input-limit.form-control
+                                option(value='1') 1
+                                option(value='2') 2
+                                option(value='3', selected='selected') 3
+
+block footer
+    +footer()
