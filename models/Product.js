@@ -21,12 +21,14 @@ const productSchema = new mongoose.Schema({
     },
     price: Number,
     photo: String,
-    featured:Boolean
-    /*owner: {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User',
-        required: 'You must supply an owner'
-    }*/
+    featured:Boolean,
+    related: [
+        { type: mongoose.Schema.ObjectId, ref: 'Product' }
+    ]
+},
+{ //this makes the virtuals visible when we dump them on the page
+        toJSON: { virtuals: true },
+        toOjbect: { virtuals: true },
 });
 /* jshint ignore:start */
 productSchema.pre('save', async function(next){

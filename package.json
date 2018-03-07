@@ -8,6 +8,9 @@
         "start": "concurrently \"npm run watch\" \"npm run assets\" --names \"💻,📦\" --prefix name",
         "assets": "webpack -w --display-max-modules 0"
     },
+    "now": {
+        "dotenv": "variables.env.now"
+    },
     "browserslist": "last 2 versions",
     "dependencies": {
         "axios": "0.15.3",

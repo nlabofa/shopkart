@@ -1,6 +1,7 @@
 extends layout
 include mixins/footer
 include mixins/sidebarCategory
+include mixins/pagination
 block content
     .breadcrumb-wrap
         .container
@@ -19,24 +20,53 @@ block content
                     .row
                         .col-md-4
                             .display
-                                a(href='category-list.html')
+                                a(href='#')
                                     i.fa.fa-th-list(title='List View')
-                                a.active(href='category-grid.html')
+                                a.active(href='#')
                                     i.fa.fa-th(title='Grid View')
                         .col-md-2.text-right
                             label.control-label Sort
                         .col-md-3.text-right
                             select.form-control
                                 option(value='default', selected='selected') Default
-                                option(value='NAZ') Name (A - Z)
-                                option(value='NZA') Name (Z - A)
-                        .col-md-1.text-right
-                            label.control-label(for='input-limit') Show
-                        .col-md-2.text-right
-                            select#input-limit.form-control
-                                option(value='1') 1
-                                option(value='2') 2
-                                option(value='3', selected='selected') 3
+                                option(value='name' class="optio") Price: Low to High
+                                option(value='price' class="optio") Price: High to Low
+                                option(value='latest' class="optio") Latest
+                                option(value='oldest' class="optio") Oldest
+                                option(value='price' class="optio") Most Liked
+                                option(value='price' class="optio") Most reviewed
+                .row
+                    each catdetail in categorydetail
+                        .col-xs-12
+                            .product-col.list.clearfix
+                                .image
+                                    img.img-responsive(src=`/public/images/product-images/${catdetail.photo}`, alt='product')
+                                .caption
+                                    h4
+                                        a(href=`/${catdetail.slug}`)=catdetail.name
+                                    .description=catdetail.description
+                                    .price
+                                        span.price-new $#{catdetail.price}
+                                        span.price-old $#{catdetail.price}
+                                    .cart-button.button-group
+                                            form.addcart(method="POST" action=`/api/stores/${catdetail._id}/carts`)
+                                                if user
+                                                    - const cartlists = user.cartlist.map(obj=>obj.toString())
+                                                    - const addedCart = cartlists.includes(catdetail._id.toString())? 'addedcart': ''
+                                                    button.btn.btn-cart(type='submit', name="cartlist" title="cartlist" class=addedCart)
+                                                        i.fa.fa-shopping-cart.hidden-sm.hidden-xs
+                                                            -//span(id='cartlist-count'+catdetail._id data-id=`${catdetail._id}`) #{addedCart?'Added to Cart':'Add to Cart'}
+                                                            span(id=`${catdetail._id}`) #{addedCart?'Added to Cart':'Add to Cart'}
+                                            form.wish(method="POST" action=`/api/stores/${catdetail._id}/wishes`)
+                                                if user
+                                                    - const wishlists = user.wishlist.map(obj=> obj.toString())
+                                                    - const wishClass = wishlists.includes(catdetail._id.toString())? 'wishearted': ''
+                                                    button.btn.btn-wishlist(type='submit', name="wishlist" title='Wishlist' class=wishClass)
+                                                        i.fa.fa-heart
+                                            button.btn.btn-compare(type='button', title='Compare')
+                                                i.fa.fa-bar-chart-o
+                .row
+                    +pagination(page,pages,count,category)
 
 block footer
     +footer()

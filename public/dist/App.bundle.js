@@ -976,10 +976,17 @@ function ajaxCart(e) {
 
     e.preventDefault();
     //console.log('wishlist event triggered');
-    console.log(this);
+    //console.log(this);
+    //console.log(jQuery(this).find("span"));
     _axios2.default.post(this.action).then(function (res) {
+        console.log(res.data);
         var isAdded = _this.cartlist.classList.toggle('addedcart');
-        (0, _bling.$)('#cart-total').textContent = res.data.cartlist.length + ' item(s)'; //const addedMain = this.addedText.classList.toggle()
+        (0, _bling.$)('#cart-total').textContent = res.data.cartlist.length + ' item(s)';
+        if (res.data.added) {
+            jQuery(_this).find("span")[0].innerHTML = 'Added To Cart';
+        } else {
+            jQuery(_this).find("span")[0].innerHTML = 'Add To Cart';
+        }
 
         if (isAdded) {
             _this.cartlist.classList.add('addedcart');
@@ -1861,13 +1868,55 @@ var _addtocart = __webpack_require__(10);
 
 var _addtocart2 = _interopRequireDefault(_addtocart);
 
+var _filter = __webpack_require__(38);
+
+var _filter2 = _interopRequireDefault(_filter);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var wishForms = (0, _bling.$$)('form.wish');
 var cartForms = (0, _bling.$$)('form.addcart');
+var filterform = (0, _bling.$$)('select');
 
 cartForms.on('submit', _addtocart2.default);
 wishForms.on('submit', _wishlist2.default);
+filterform.on('change', _filter2.default);
+
+/***/ }),
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _axios = __webpack_require__(3);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _bling = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function filter() {
+    console.log('filter started');
+    console.log(this.value);
+    var endpoint = '/api/stores/' + this.value;
+    _axios2.default.post(endpoint).then(function (res) {
+        console.log(res);
+    }).catch(console.error);
+}
+
+exports.default = filter;
 
 /***/ })
 /******/ ]);

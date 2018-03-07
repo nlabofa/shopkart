@@ -2,18 +2,20 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 
-const relatedProductSchema = new mongoose.Schema({
+const categorySchema = new mongoose.Schema({
     name:{
         type:String,
         trim: true,
-        required: 'Please chhose a related product'
+        required: 'Please choose a related product'
     },
+    photo: String,
+    description: String,
     created:{
         type: Date,
         default: Date.now
     },
-    relatedId: [
+    product: [
         { type: mongoose.Schema.ObjectId, ref: 'Product' }
     ]
 });
-module.exports = mongoose.model('RelatedProduct', relatedProductSchema);
+module.exports = mongoose.model('Category', categorySchema);

@@ -7,53 +7,5 @@ mixin sidebarCategory(categorysidebar)
                     a.list-group-item(href=`/product/${cat._id}`)
                         i.fa.fa-angle-right  
                             |&nbsp;#{cat._id}
-            h3.side-heading Shopping Options
-            .list-group
-                .list-group-item
-                    | Brands
-                .list-group-item
-                    .filter-group
-                        label.checkbox
-                            input(name='filter1', type='checkbox', value='br1', checked='checked')
-                            | 								Brand Name 1
-                        label.checkbox
-                            input(name='filter2', type='checkbox', value='br2')
-                            | 								Brand Name 2
-                        label.checkbox
-                            input(name='filter2', type='checkbox', value='br2')
-                            | 								Brand Name 3
-                .list-group-item
-                    | Manufacturer
-                .list-group-item
-                    .filter-group
-                        label.radio
-                            input(name='filter-manuf', type='radio', value='mr1', checked='checked')
-                            | 								Manufacturer Name 1
-                        label.radio
-                            input(name='filter-manuf', type='radio', value='mr2')
-                            | 								Manufacturer Name 2
-                        label.radio
-                            input(name='filter-manuf', type='radio', value='mr3')
-                            | 								Manufacturer Name 3
-                .list-group-item
-                    button.btn.btn-main(type='button') Filter
-            h3.side-heading Bestsellers
-            .product-col
-                .image
-                    img.img-responsive(src='/public/images/product-images/5.jpg', alt='product')
-                .caption
-                    h4
-                        a(href='product-full.html') Digital Electro Goods
-                    .description
-                        | We are so lucky living in such a wonderful time. Our almost unlimited ...
-                    .price
-                        span.price-new $199.50
-                        span.price-old $249.50
-                    .cart-button.button-group
-                        button.btn.btn-cart(type='button')
-                            i.fa.fa-shopping-cart.hidden-sm.hidden-xs
-                            | 								Add to Cart
-                        button.btn.btn-wishlist(type='button', title='Wishlist')
-                            i.fa.fa-heart
-                        button.btn.btn-compare(type='button', title='Compare')
-                            i.fa.fa-bar-chart-o
+
+                    

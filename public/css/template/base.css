@@ -1212,13 +1212,18 @@ hr {
 .product-info .product-details .btn-wishlist:hover,
 .product-info .product-details .btn-compare:hover,
 .product-info .product-details .btn-cart {
-    background: #cb3737;
+    background: #303030;
 }
 
 .product-info .product-details .btn-cart {
     font-size: 14px;
     color: #fff;
     font-weight: bold;
+}
+
+.pagination li {
+    display: inline-block!important;
+    padding-right: 2rem;
 }
 
 .product-info .product-details .btn-cart .fa {
@@ -1367,7 +1372,7 @@ hr {
 
 .results {
     padding-top: 10px;
-    text-align: right;
+    text-align: left;
 }
 
 
@@ -1400,6 +1405,7 @@ hr {
 .wishearted {
     color: #cb3737!important;
     border: 1px solid #cb3737!important;
+    background: white!important;
 }
 
 .btn-text {

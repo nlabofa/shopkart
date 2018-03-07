@@ -12,21 +12,29 @@ mixin featuredProducts(featured)
                             img.img-responsive(src=`/public/images/product-images/${product.photo}`, alt='product')
                         .caption
                             h4
-                                a(href='#')=product.name
+                                a(href=`/${product.slug}`)=product.name
                             .description=product.description
                                 
                             .price
                                 span.price-new $ #{product.price}
                                 span.price-old $ #{product.price}
                             .cart-button.button-group
-                                button.btn.btn-cart(type='button')
-                                    i.fa.fa-shopping-cart
-                                    |  Add to Cart
-                                button.btn.btn-wishlist(type='button', title='Wishlist')
-                                    i.fa.fa-heart
+                                form.addcart(method="POST" action=`/api/stores/${product._id}/carts`)
+                                    if user
+                                        - const cartlists = user.cartlist.map(obj=>obj.toString())
+                                        - const addedCart = cartlists.includes(product._id.toString())? 'addedcart': ''
+                                        button.btn.btn-cart(type='submit', name="cartlist" title="cartlist" class=addedCart)
+                                            i.fa.fa-shopping-cart.hidden-sm.hidden-xs
+                                                -//span(id='cartlist-count'+product._id data-id=`${product._id}`) #{addedCart?'Added to Cart':'Add to Cart'}
+                                                span(id=`${product._id}`) #{addedCart?'Added to Cart':'Add to Cart'}
+                                form.wish(method="POST" action=`/api/stores/${product._id}/wishes`)
+                                    if user
+                                        - const wishlists = user.wishlist.map(obj=> obj.toString())
+                                        - const wishClass = wishlists.includes(product._id.toString())? 'wishearted': ''
+                                        button.btn.btn-wishlist(type='submit', name="wishlist" title='Wishlist' class=wishClass)
+                                            i.fa.fa-heart
                                 button.btn.btn-compare(type='button', title='Compare')
                                     i.fa.fa-bar-chart-o
-       
     .col2-banners
         .row
             .col-sm-5.col-xs-12

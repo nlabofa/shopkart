@@ -1,0 +1,15 @@
+mixin pagination(page,pages,count,category)
+        .col-sm-4.results
+            | Page #{page} of #{pages} — #{count} total results  
+        .col-sm-6.pagination-block
+            ul.pagination
+                if page > 1
+                    li
+                        a(href=`/product/${category}/${page - 1}`) «
+                //- for (var i = 0; i < count; ++i) {
+                    li.active
+                        a(href='#')=i
+                //- }
+                if page < pages
+                    li
+                        a(href=`/product/${category}/${parseFloat(page) + 1}`) »

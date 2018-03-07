@@ -22,6 +22,7 @@ router.post('/login', authController.login);
 router.post('/create', catchErrors(productController.createProduct));
 router.get('/:slug', catchErrors(productController.getProductBySlug));
 router.get('/product/:catid', catchErrors(productController.getProductByCategory));
+router.get('/product/:catid/:page', catchErrors(productController.getProductByCategory));
 router.post('/api/stores/:id/wishes', catchErrors(productController.addWishList));
 router.post('/api/stores/:id/carts', catchErrors(productController.addToCart));
 

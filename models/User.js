@@ -37,7 +37,8 @@ const userSchema = new Schema({
     ],
     cartlist:[
         {type: mongoose.Schema.ObjectId, ref:'Product'}
-    ]
+    ],
+    added:String
 });
 userSchema.virtual('gravatar').get(function(){
     const hash = md5(this.email);
